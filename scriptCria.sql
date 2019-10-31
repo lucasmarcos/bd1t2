@@ -20,11 +20,10 @@ CREATE TABLE atendente (
 
 CREATE TABLE contato (
 	protocolo SERIAL,
-	data DATE NOT NULL,
-	inicio TIME NOT NULL,
-	termino TIME NOT NULL,
+	inicio TIMESTAMP NOT NULL,
+	termino TIMESTAMP NOT NULL,
 	descricao VARCHAR(256),
-	status VARCHAR(32),
+	status INTEGER, -- um enum de todos os estados possivel com detalhes especificos em 'descricao'
 	consumidor CHAR(11) NOT NULL,
 	atendente INTEGER NOT NULL,
 	CONSTRAINT fk_contato_consumidor FOREIGN KEY (consumidor) REFERENCES consumidor (cpf),
