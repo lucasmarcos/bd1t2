@@ -26,7 +26,7 @@ CREATE TABLE contato (
 	status INTEGER, -- um enum de todos os estados possivel com detalhes especificos em 'descricao'
 	consumidor CHAR(11) NOT NULL,
 	atendente INTEGER NOT NULL,
-	CONSTRAINT pk_contato PRIMARY KEY (contato),
+	CONSTRAINT pk_contato PRIMARY KEY (protocolo),
 	CONSTRAINT fk_contato_consumidor FOREIGN KEY (consumidor) REFERENCES consumidor (cpf),
 	CONSTRAINT fk_contato_atendente  FOREIGN KEY (atendente)  REFERENCES atendente (cracha)
 );
