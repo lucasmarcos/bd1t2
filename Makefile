@@ -22,3 +22,6 @@ script_cria: scriptCria.sql
 
 script_insere: scriptInsere.sql
 	${PSQL} -h ${SOCKET} ${DBNAME} -f $<
+
+script_consulta: scriptConsulta.sql
+	${PSQL} -h ${SOCKET} ${DBNAME} -f $<

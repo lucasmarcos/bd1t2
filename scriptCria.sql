@@ -23,13 +23,11 @@ CREATE TABLE contato (
 	inicio TIMESTAMP NOT NULL,
 	termino TIMESTAMP NOT NULL,
 	descricao VARCHAR(256),
-	status INTEGER, -- um enum de todos os estados possivel com detalhes especificos em 'descricao'
+	status VARCHAR(32) NOT NULL, -- um enum de todos os estados possivel com detalhes especificos em 'descricao'
 	consumidor CHAR(11) NOT NULL,
 	atendente INTEGER NOT NULL,
 	CONSTRAINT pk_contato PRIMARY KEY (protocolo),
 	CONSTRAINT fk_contato_consumidor FOREIGN KEY (consumidor) REFERENCES consumidor (cpf),
-	CONSTRAINT fk_contato_atendente  FOREIGN KEY (atendente)  REFERENCES atendente (cracha)
+	CONSTRAINT fk_contato_atendente  FOREIGN KEY (atendente)  REFERENCES atendente (cracha),
+	CONSTRAINT check_status CHECK (status IN ('Resolvido', 'Em andamento', 'Iniciado'))
 );
-
-COMMENT ON COLUMN contato.status
-IS 'Status [1 Iniciado] [2 Em andamento] [3 Finalizado]';
