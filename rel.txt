@@ -1,0 +1,5 @@
+Consumidor = {Nome, RG, CPF, DataDeNascimento, Endereco}
+
+Atendente = {Cracha, Nome, Setor}
+
+ContatoSAC = {Protocolo, DataAtendimento, HoraInicio, HoraTermino, DescricaoGeral, Status, Consumidor, Atendente}
