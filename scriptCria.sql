@@ -20,13 +20,13 @@ CREATE TABLE atendente (
 
 CREATE TABLE contato (
 	protocolo SERIAL,
-	data DATE,
-	inicio TIME,
-	termino TIME,
+	data DATE NOT NULL,
+	inicio TIME NOT NULL,
+	termino TIME NOT NULL,
 	descricao VARCHAR(256),
 	status VARCHAR(32),
-	consumidor CHAR(11),
-	atendente INTEGER,
+	consumidor CHAR(11) NOT NULL,
+	atendente INTEGER NOT NULL,
 	CONSTRAINT fk_contato_consumidor FOREIGN KEY (consumidor) REFERENCES consumidor (cpf),
 	CONSTRAINT fk_contato_atendente  FOREIGN KEY (atendente)  REFERENCES atendente (cracha)
 );

@@ -1,11 +1,11 @@
-DELETE FROM consumidor WHERE;
-DELETE FROM consumidor WHERE;
-DELETE FROM consumidor WHERE;
+DELETE FROM consumidor WHERE tatata;
+DELETE FROM consumidor WHERE tatata;
+DELETE FROM consumidor WHERE tatata;
 
-DELETE FROM atendente WHERE;
-DELETE FROM atendente WHERE;
-DELETE FROM atendente WHERE;
+DELETE FROM atendente WHERE tatata;
+DELETE FROM atendente WHERE tatata;
+DELETE FROM atendente WHERE tatata;
 
-DELETE FROM contato WHERE;
-DELETE FROM contato WHERE;
-DELETE FROM contato WHERE;
+DELETE FROM contato WHERE tatata;
+DELETE FROM contato WHERE tatata;
+DELETE FROM contato WHERE tatata;
