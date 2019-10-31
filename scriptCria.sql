@@ -29,3 +29,6 @@ CREATE TABLE contato (
 	CONSTRAINT fk_contato_consumidor FOREIGN KEY (consumidor) REFERENCES consumidor (cpf),
 	CONSTRAINT fk_contato_atendente  FOREIGN KEY (atendente)  REFERENCES atendente (cracha)
 );
+
+COMMENT ON COLUMN contato.status
+IS 'Status [1 Iniciado] [2 Em andamento] [3 Finalizado]';
