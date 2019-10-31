@@ -21,3 +21,11 @@ WHERE contato.consumidor = consumidor.cpf
 ORDER BY contato.status,
          contato.inicio,
          consumidor.nome;
+
+-- LEFT OUTER JOIN
+-- RIGHT OUTER JOIN
+-- FULL OUTER JOIN
+
+-- UNION
+-- INTERSECT
+-- MINUS
