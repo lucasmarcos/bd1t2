@@ -1,5 +1,5 @@
-Consumidor = {Nome, RG, _CPF_, Nascimento, Endereco}
+Consumidor = {_CPF_, Nome, RG, Nascimento, Endereco}
 
 Atendente = {_Cracha_, Nome, Setor}
 
-ContatoSAC = {Protocolo, Data, Inicio, Termino, Descricao, Status, *Consumidor*, *Atendente*}
+ContatoSAC = {_Protocolo_, Data, Inicio, Termino, Descricao, Status, *Consumidor*, *Atendente*}
