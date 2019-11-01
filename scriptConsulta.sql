@@ -22,9 +22,25 @@ ORDER BY contato.status,
          contato.inicio,
          consumidor.nome;
 
--- LEFT OUTER JOIN
--- RIGHT OUTER JOIN
--- FULL OUTER JOIN
+-- left join de alguma coisa sei lá
+SELECT *
+FROM consumidor
+LEFT OUTER JOIN contato
+             ON contato.consumidor = consumidor.cpf
+ORDER BY consumidor.nome;
+
+-- right join wtf
+SELECT *
+FROM contato
+RIGHT OUTER JOIN atendente
+              ON atendente.cracha = contato.atendente
+ORDER BY atendente.nome;
+
+-- sem sentido algum
+SELECT *
+FROM atendente
+FULL OUTER JOIN contato
+             ON contato.atendente = atendente.cracha;
 
 -- UNION
 -- INTERSECT
