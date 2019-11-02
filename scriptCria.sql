@@ -57,8 +57,6 @@ CREATE TABLE chamado (
 	CONSTRAINT check_status CHECK (status IN ('Resolvido', 'Em andamento', 'Iniciado'))
 );
 
--- ainda nao decidido 100% como mapear a hiararquia
-
 CREATE TABLE contato (
 	protocolo SERIAL,
 	consumidor CHAR(11) NOT NULL,
@@ -92,8 +90,6 @@ CREATE TABLE resposta (
 	CONSTRAINT fk_sac_atendente FOREIGN KEY (atendente) REFERENCES atendente (cracha),
 	CONSTRAINT fk_site FOREIGN KEY (contato) REFERENCES contato (protocolo)
 );
-
---
 
 CREATE TABLE medida_interna (
 	nome VARCHAR(32),
@@ -150,5 +146,3 @@ CREATE TABLE consulta_ao_faq (
 	CONSTRAINT fk_chamado_servico FOREIGN KEY (chamado) REFERENCES chamado (protocolo),
 	CONSTRAINT fk_faq FOREIGN KEY (pergunta) REFERENCES faq (pergunta)
 );
-
--- encaminhar chamados aos reponsaveis

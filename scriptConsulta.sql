@@ -15,6 +15,44 @@ FROM chamado, contato
 WHERE contato.chamado = chamado.protocolo
   AND chamado.status = 'Em andamento';
 
+-- LEFT OUTER JOIN
+-- RIGHT OUTER JOIN
+-- FULL OUTER JOIN
+
+-- union
+(SELECT atendente.nome AS "Atendentes e Responsáveis"
+FROM atendente)
+UNION
+(SELECT empregado.nome
+FROM empregado, setor
+WHERE setor.responsavel = empregado.cracha);
+
+-- consumidores que abriram chamados tanto para items quanto para serviços
+(SELECT consumidor.cpf AS "CPF",
+        consumidor.nome AS "Consumidor"
+FROM consumidor, contato, chamado, item_comprado
+WHERE consumidor.cpf = contato.consumidor
+  AND contato.chamado = chamado.protocolo
+  AND chamado.protocolo = item_comprado.chamado)
+INTERSECT
+(SELECT consumidor.cpf,
+        consumidor.nome
+FROM consumidor, contato, chamado, servico_contratado
+WHERE consumidor.cpf = contato.consumidor
+  AND contato.chamado = chamado.protocolo
+  AND chamado.protocolo = servico_contratado.chamado);
+
+-- consumidores que não entraram em contato por e-mail
+(SELECT consumidor.cpf  AS "CPF",
+        consumidor.nome AS "Consumidor"
+FROM consumidor, contato
+WHERE consumidor.cpf = contato.consumidor)
+EXCEPT
+(SELECT consumidor.cpf, consumidor.nome
+FROM consumidor, contato, contato_site
+WHERE consumidor.cpf = contato.consumidor
+  AND contato.protocolo = contato_site.contato);
+
 -- todos os atendente que respoderam chamados sobre todos os item cadastrados
 SELECT atendente.cracha AS "Crachá",
        atendente.nome   AS "Nome"
@@ -28,3 +66,10 @@ WHERE contato.protocolo = contato_sac.contato
   AND atendente.cracha = contato_sac.atendente
   AND contato.chamado = chamado.protocolo
   AND chamado.protocolo = item_comprado.chamado));
+
+-- L I V R E algebra
+
+-- 3 GROUP BY
+-- 2 GROUP BY + HAVING
+
+-- L I V R E  comando novo sql
