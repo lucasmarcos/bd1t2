@@ -4,10 +4,10 @@ Atendente = {_Cracha_, Nome, *Setor*}
 
 Setor = {_Codigo_, Nome, *Responsavel*}
 
+Empregado = {}
+
 ContatoSAC = {_Protocolo_, Data, Inicio, Termino, Descricao, Status, *Consumidor*, *Atendente*}
-
 ContatoSite = {}
-
 Resposta = {}
 
 Chamado = {}

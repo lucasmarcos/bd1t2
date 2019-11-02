@@ -1,61 +1,30 @@
--- todos os contatos com o nome do consumidor e do atendete
-SELECT consumidor.nome   AS "Consumidor",
-       atendente.nome    AS "Atendente",
-       contato.descricao AS "Descrição Geral do Contato",
-       contato.status    AS "Status do Contato"
-FROM consumidor, atendente, contato
-WHERE contato.consumidor = consumidor.cpf
-  AND contato.atendente = atendente.cracha
-ORDER BY contato.inicio,
-         consumidor.nome,
-         atendente.nome;
+-- selecinamos o nome do atendente e o status de todos os contatos de 'Lucas Marcos'
+SELECT consumidor.nome  AS "Consumidor",
+       atendente.nome   AS "Atendente",
+       contato.detalhes AS "Detalhes do contato"
+FROM atendente, consumidor, contato, contato_sac
+WHERE contato_sac.atendente = atendente.cracha
+  AND contato.protocolo = contato_sac.contato
+  AND contato.consumidor = consumidor.cpf
+  AND consumidor.nome = 'Lucas Marcos';
 
--- todos os atendimentos 'Resolvidos' de 'Lucas Marcos'
-SELECT consumidor.nome   AS "Consumidor",
-       contato.descricao AS "Descrição Geral do Contato",
-       contato.status    AS "Status do Contato"
-FROM consumidor, contato
-WHERE contato.consumidor = consumidor.cpf
-  AND consumidor.nome    = 'Lucas Marcos'
-  AND contato.status     = 'Resolvido'
-ORDER BY contato.status,
-         contato.inicio,
-         consumidor.nome;
+-- o protocolo e detalhes de todos os contatos de chamados 'Em andamento'
+SELECT contato.protocolo AS "Protocolo do contato",
+       contato.detalhes  AS "Detalhes"
+FROM chamado, contato
+WHERE contato.chamado = chamado.protocolo
+  AND chamado.status = 'Em andamento';
 
--- left join de alguma coisa sei lá
-SELECT *
-FROM consumidor
-LEFT OUTER JOIN contato
-             ON contato.consumidor = consumidor.cpf
-ORDER BY consumidor.nome;
-
--- right join wtf
-SELECT *
-FROM contato
-RIGHT OUTER JOIN atendente
-              ON atendente.cracha = contato.atendente
-ORDER BY atendente.nome;
-
--- sem sentido algum
-SELECT *
+-- todos os atendente que respoderam chamados sobre todos os item cadastrados
+SELECT atendente.cracha AS "Crachá",
+       atendente.nome   AS "Nome"
 FROM atendente
-FULL OUTER JOIN contato
-             ON contato.atendente = atendente.cracha;
-
-(SELECT
-FROM)
-UNION
-(SELECT
-FROM)
-
-(SELECT
-FROM)
-INTERSECT
-(SELECT
-FROM)
-
-(SELECT
-FROM)
-EXCEPT
-(SELECT
-FROM)
+WHERE NOT EXISTS
+((SELECT codigo FROM item)
+ EXCEPT
+(SELECT item_comprado.item
+FROM contato, contato_sac, chamado, item_comprado
+WHERE contato.protocolo = contato_sac.contato
+  AND atendente.cracha = contato_sac.atendente
+  AND contato.chamado = chamado.protocolo
+  AND chamado.protocolo = item_comprado.chamado));
