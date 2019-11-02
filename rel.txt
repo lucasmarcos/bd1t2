@@ -1,5 +1,25 @@
 Consumidor = {_CPF_, Nome, RG, Nascimento, Endereco}
 
-Atendente = {_Cracha_, Nome, Setor}
+Atendente = {_Cracha_, Nome, *Setor*}
+
+Setor = {_Codigo_, Nome, *Responsavel*}
 
 ContatoSAC = {_Protocolo_, Data, Inicio, Termino, Descricao, Status, *Consumidor*, *Atendente*}
+
+ContatoSite = {}
+
+Resposta = {}
+
+Chamado = {}
+
+MedidaInterna = {}
+MedidaInternaTomada = {}
+
+Item = {}
+ItemComprado = {}
+
+Servico = {}
+ServicoContratado = {}
+
+FAQ = {}
+ConsultaAoFaq = {}
