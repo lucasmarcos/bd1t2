@@ -69,7 +69,27 @@ WHERE contato.protocolo = contato_sac.contato
 
 -- L I V R E algebra
 
--- 3 GROUP BY
+SELECT atendente.nome        AS "Atendente",
+       COUNT(atendente.nome) AS "Atendimentos por Atendente"
+FROM atendente, contato, contato_sac
+WHERE contato.protocolo = contato_sac.contato
+  AND contato_sac.atendente = atendente.cracha
+GROUP BY atendente.nome;
+
+SELECT EXTRACT(MONTH FROM contato_sac.inicio) AS "Mês",
+       COUNT(*)                               AS "Atendimentos"
+FROM contato_sac, contato
+WHERE contato_sac.contato = contato.protocolo
+GROUP BY EXTRACT(MONTH FROM contato_sac.inicio);
+
+SELECT atendente.cracha AS "Crachá",
+       atendente.nome   AS "Atendente",
+       COUNT(*)         AS "Atendimentos"
+FROM atendente, contato, contato_sac
+WHERE atendente.cracha = contato_sac.atendente
+  AND contato.protocolo = contato_sac.contato
+GROUP BY atendente.cracha;
+
 -- 2 GROUP BY + HAVING
 
 -- L I V R E  comando novo sql
