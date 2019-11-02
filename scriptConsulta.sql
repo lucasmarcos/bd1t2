@@ -42,6 +42,20 @@ FROM atendente
 FULL OUTER JOIN contato
              ON contato.atendente = atendente.cracha;
 
--- UNION
--- INTERSECT
--- MINUS
+(SELECT
+FROM)
+UNION
+(SELECT
+FROM)
+
+(SELECT
+FROM)
+INTERSECT
+(SELECT
+FROM)
+
+(SELECT
+FROM)
+EXCEPT
+(SELECT
+FROM)

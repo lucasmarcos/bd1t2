@@ -39,6 +39,8 @@ CREATE TABLE atendente (
 	CONSTRAINT fk_atendente_setor FOREIGN KEY (setor) REFERENCES setor (codigo)
 );
 
+-- ainda nao decidido 100% como mapear a hiararquia
+
 CREATE TABLE contato (
 	protocolo SERIAL,
 	consumidor CHAR(11) NOT NULL,
@@ -71,6 +73,8 @@ CREATE TABLE resposta (
 	CONSTRAINT fk_site FOREIGN KEY (contato) REFERENCES contato (protocolo)
 );
 
+--
+
 CREATE TABLE chamado (
 	protocolo SERIAL,
 	status VARCHAR(32) NOT NULL,
@@ -97,7 +101,7 @@ CREATE TABLE media_interna_tomada (
 
 CREATE TABLE item (
 	codigo SERIAL,
-	nome VARCHAR(64) NOT NULL,
+	nome VARCHAR(64) NOT NULL UNIQUE,
 	CONSTRAINT pk_item PRIMARY KEY (codigo)
 );
 
@@ -110,7 +114,7 @@ CREATE TABLE item_comprado (
 
 CREATE TABLE servico (
 	codigo SERIAL,
-	nome VARCHAR(64) NOT NULL,
+	nome VARCHAR(64) NOT NULL UNIQUE,
 	CONSTRAINT pk_servico PRIMARY KEY (codigo)
 );
 

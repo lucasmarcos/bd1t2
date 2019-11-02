@@ -4,17 +4,19 @@ DBPATH ?= ./db
 DBNAME ?= bd1t2
 SOCKET ?= /tmp/postgres
 
+.PHONY: db start stop create_db
+
 db:
 	${PGCTL} -D ${DBPATH} initdb
 
-start:
+start: db
 	mkdir -p /tmp/postgres
 	${PGCTL} -o "-k ${SOCKET}" -D ${DBPATH} start
 
 stop:
 	${PGCTL} -o "-k ${SOCKET}" -D ${DBPATH} stop
 
-create_db:
+create_db: start
 	echo "CREATE DATABASE ${DBNAME};" | ${PSQL} -h ${SOCKET} postgres
 
 script_cria: scriptCria.sql
