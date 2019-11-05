@@ -80,7 +80,9 @@ INSERT INTO item_comprado (item, chamado) VALUES
 	(1, 1);
 
 INSERT INTO servico_contratado (servico, chamado) VALUES
-	(1, 1);
+	(1, 1),
+	(2, 1),
+	(3, 1);
 
 INSERT INTO consulta_ao_faq (chamado, pergunta) VALUES
 	(1, 'Como desliga?');

@@ -15,14 +15,23 @@ FROM chamado, contato
 WHERE contato.chamado = chamado.protocolo
   AND chamado.status = 'Em andamento';
 
--- LEFT OUTER JOIN
-todos os chamados, e quando tem item eles tambem
+-- todos os chamados, e quando tem item eles tambem
+SELECT chamado.protocolo  AS "Chamado",
+       item_comprado.item AS "Código do Item"
+FROM chamado
+LEFT OUTER JOIN item_comprado
+ON chamado.protocolo = item_comprado.chamado;
 
--- RIGHT OUTER JOIN
-todos os servicos e se tiver chamados vem
+-- todos os servicos e se tiver chamados com eles vem também
+-- TÁ ERRADO
+SELECT chamado.protocolo          AS "Chamado",
+       servico_contratado.servico AS "Código do Serviço"
+FROM chamado
+RIGHT OUTER JOIN servico_contratado
+ON chamado.protocolo = servico_contratado.chamado;
 
 -- FULL OUTER JOIN
-?
+-- ?
 
 -- union
 (SELECT atendente.nome AS "Atendentes e Responsáveis"
@@ -74,12 +83,13 @@ WHERE contato.protocolo = contato_sac.contato
 
 -- L I V R E algebra
 
-SELECT atendente.nome        AS "Atendente",
-       COUNT(atendente.nome) AS "Atendimentos por Atendente"
+SELECT atendente.nome   AS "Atendente",
+       atendente.cracha AS "Crachá",
+       COUNT(*)         AS "Número de Atendimentos"
 FROM atendente, contato, contato_sac
 WHERE contato.protocolo = contato_sac.contato
   AND contato_sac.atendente = atendente.cracha
-GROUP BY atendente.nome;
+GROUP BY atendente.cracha;
 
 SELECT EXTRACT(MONTH FROM contato_sac.inicio) AS "Mês",
        COUNT(*)                               AS "Atendimentos"
@@ -87,13 +97,12 @@ FROM contato_sac, contato
 WHERE contato_sac.contato = contato.protocolo
 GROUP BY EXTRACT(MONTH FROM contato_sac.inicio);
 
-SELECT atendente.cracha AS "Crachá",
-       atendente.nome   AS "Atendente",
-       COUNT(*)         AS "Atendimentos"
-FROM atendente, contato, contato_sac
-WHERE atendente.cracha = contato_sac.atendente
-  AND contato.protocolo = contato_sac.contato
-GROUP BY atendente.cracha;
+SELECT item.nome AS "Item",
+       COUNT(*)  AS "Reclamações"
+FROM item, chamado, item_comprado
+WHERE item.codigo = item_comprado.item
+  AND chamado.protocolo = item_comprado.chamado
+GROUP BY item.codigo
 
 -- 2 GROUP BY + HAVING
 
