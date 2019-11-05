@@ -1,25 +1,23 @@
 Consumidor = {_CPF_, Nome, RG, Nascimento, Endereco}
 
 Atendente = {_Cracha_, Nome, *Setor*}
+Empregado = {_Cracha_, Nome, *Setor*}
 
-Setor = {_Codigo_, Nome, *Responsavel*}
+Setor = {_Nome_, *Responsavel*}
 
-Empregado = {}
+Contato = {_Protocolo_, *Consumidor*, *Chamado*, Descricao}
+ContatoSAC = {*Contato*, Inicio, Termino, *Atendente*}
+ContatoSite = {*Contato*, Data}
+Resposta = {*Contato*, *Atendente*}
 
-ContatoSAC = {_Protocolo_, Data, Inicio, Termino, Descricao, Status, *Consumidor*, *Atendente*}
-ContatoSite = {}
-Resposta = {}
+Chamado = {_Protocolo_, Status}
 
-Chamado = {}
+MedidaInterna = {_Medida_, Descricao}
+Item = {_Codigo_, Nome}
+Servico = {_Codigo_, Nome}
+FAQ = {_Pergunta_, Resposta}
 
-MedidaInterna = {}
-MedidaInternaTomada = {}
-
-Item = {}
-ItemComprado = {}
-
-Servico = {}
-ServicoContratado = {}
-
-FAQ = {}
-ConsultaAoFaq = {}
+MedidaInternaTomada = {*MedidaInterna*, *Chamado*}
+ItemComprado = {*Item*, *Chamado*}
+ServicoContratado = {*Servico*, *Chamado*}
+ConsultaAoFaq = {*Pergunta*, *Chamado*}

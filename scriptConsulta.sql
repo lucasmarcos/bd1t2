@@ -23,7 +23,7 @@ LEFT OUTER JOIN item_comprado
 ON chamado.protocolo = item_comprado.chamado;
 
 -- todos os servicos e se tiver chamados com eles vem também
--- TÁ ERRADO
+-- TÁ ERRADO!
 SELECT chamado.protocolo          AS "Chamado",
        servico_contratado.servico AS "Código do Serviço"
 FROM chamado
@@ -102,7 +102,7 @@ SELECT item.nome AS "Item",
 FROM item, chamado, item_comprado
 WHERE item.codigo = item_comprado.item
   AND chamado.protocolo = item_comprado.chamado
-GROUP BY item.codigo
+GROUP BY item.codigo;
 
 -- 2 GROUP BY + HAVING
 
