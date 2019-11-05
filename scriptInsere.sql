@@ -30,13 +30,57 @@ INSERT INTO empregado (nome, setor) VALUES
 	('Kathryn Bigelow',     (SELECT codigo FROM setor WHERE nome = 'Plásticos'));
 
 INSERT INTO item (nome) VALUES
-	('GamerGirl Bath Water');
+	('GamerGirl Bath Water'),
+	('COMBO: The Outer Worlds + Outer Wilds'),
+	('RED Weapon');
 
 INSERT INTO servico (nome) VALUES
-	('Controle da Danos');
+	('Controle da Danos'),
+	('Descoberta de Vigilantes Mascarados'),
+	('Modelagem 3D');
 
 INSERT INTO faq (pergunta, resposta) VALUES
-	('Como desliga?', 'Aperta o botão.');
+	('Como desliga?', 'Aperta o botão.'),
+	('Esses cachorros são seus?', 'São de rua.'),
+	('Posso entregar no outro dia?', 'Não.');
 
 INSERT INTO medida_interna (nome, descricao) VALUES
-	('8m x 54cm', '');
+	('8m x 54cm', ''),
+	('1cm x 1cm', 'cm'),
+	('74 pés', ''),
+	('76m^3', ''),
+	('8 km/h', 'por hora?');
+
+--
+INSERT INTO chamado (status) VALUES ('Resolvido');
+
+INSERT INTO contato (consumidor, chamado, detalhes) VALUES
+	('12345678910', 1, 'nada aconteceu eu acho, esqueci. nada a reportar.'),
+	('12345678910', 1, 'olá o atendente que me respondeu foi bem grosso nossa horrível essa empressa vim por esse e-mail apenas espalhar o ódio.'),
+	('12345678910', 1, 'por favor nos deixe em paz!!!');
+
+INSERT INTO contato_sac (contato, inicio, termino, atendente) VALUES
+	(1, '2019-11-05 01:29', '2019-11-05 01:30', 1);
+
+INSERT INTO contato_site (contato, envio) VALUES
+	(2, '2019-11-05 01:31');
+
+INSERT INTO resposta (contato, atendente, prazo, tipo) VALUES
+	(3, 1, '2099-11-05', 'E-Mail');
+--
+INSERT INTO chamado (status) VALUES ('Em andamento');
+--
+INSERT INTO chamado (status) VALUES ('Iniciado');
+--
+
+INSERT INTO medida_interna_tomada (medida, chamado, status, observacoes) VALUES
+	('8 km/h', 1, 'Concluído', '');
+
+INSERT INTO item_comprado (item, chamado) VALUES
+	(1, 1);
+
+INSERT INTO servico_contratado (servico, chamado) VALUES
+	(1, 1);
+
+INSERT INTO consulta_ao_faq (chamado, pergunta) VALUES
+	(1, 'Como desliga?');

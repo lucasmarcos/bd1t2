@@ -16,8 +16,13 @@ WHERE contato.chamado = chamado.protocolo
   AND chamado.status = 'Em andamento';
 
 -- LEFT OUTER JOIN
+todos os chamados, e quando tem item eles tambem
+
 -- RIGHT OUTER JOIN
+todos os servicos e se tiver chamados vem
+
 -- FULL OUTER JOIN
+?
 
 -- union
 (SELECT atendente.nome AS "Atendentes e Responsáveis"

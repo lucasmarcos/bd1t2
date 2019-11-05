@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS servico_contratado;
 DROP TABLE IF EXISTS servico;
 DROP TABLE IF EXISTS item_comprado;
 DROP TABLE IF EXISTS item;
-DROP TABLE IF EXISTS media_interna_tomada;
+DROP TABLE IF EXISTS medida_interna_tomada;
 DROP TABLE IF EXISTS medida_interna;
 DROP TABLE IF EXISTS consulta_ao_faq;
 DROP TABLE IF EXISTS faq;
@@ -97,7 +97,7 @@ CREATE TABLE medida_interna (
 	CONSTRAINT pk_medida_interna PRIMARY KEY (nome)
 );
 
-CREATE TABLE media_interna_tomada (
+CREATE TABLE medida_interna_tomada (
 	protocolo SERIAL,
 	medida VARCHAR(32),
 	chamado INTEGER NOT NULL,
@@ -128,10 +128,10 @@ CREATE TABLE servico (
 );
 
 CREATE TABLE servico_contratado (
-	codigo INTEGER NOT NULL,
+	servico INTEGER NOT NULL,
 	chamado INTEGER NOT NULL,
 	CONSTRAINT fk_chamado_servico FOREIGN KEY (chamado) REFERENCES chamado (protocolo),
-	CONSTRAINT fk_servico_contratado FOREIGN KEY (codigo) REFERENCES servico (codigo)
+	CONSTRAINT fk_servico_contratado FOREIGN KEY (servico) REFERENCES servico (codigo)
 );
 
 CREATE TABLE faq (
