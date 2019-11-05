@@ -81,7 +81,7 @@ WHERE contato.protocolo = contato_sac.contato
   AND contato.chamado = chamado.protocolo
   AND chamado.protocolo = item_comprado.chamado));
 
--- L I V R E algebra
+-- L I V R E (refletindo a que fizermos em algebra relacional)
 
 SELECT atendente.nome   AS "Atendente",
        atendente.cracha AS "Crachá",
@@ -104,6 +104,12 @@ WHERE item.codigo = item_comprado.item
   AND chamado.protocolo = item_comprado.chamado
 GROUP BY item.codigo;
 
--- 2 GROUP BY + HAVING
+-- GROUP BY
+-- HAVING
+-- ?
 
--- L I V R E  comando novo sql
+-- GROUP BY
+-- HAVING
+-- ?
+
+-- L I V R E (usando um comando novo do psql)
