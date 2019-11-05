@@ -12,27 +12,28 @@ INSERT INTO setor (nome) VALUES
 	('Reparos'),
 	('Hospício'),
 	('Roteiro'),
+	('Reclamações'),
 	('Lavanderia'),
 	('Plásticos');
 
 INSERT INTO atendente (nome, setor) VALUES
-	('Felipe Marcos',   (SELECT codigo FROM setor WHERE nome = 'Reparos')),
-	('Kanye West',      (SELECT codigo FROM setor WHERE nome = 'Hospício')),
-	('Kristen Bell',    (SELECT codigo FROM setor WHERE nome = 'Roteiro')),
-	('Martin Scorsese', (SELECT codigo FROM setor WHERE nome = 'Lavanderia')),
-	('Laura Palmer',    (SELECT codigo FROM setor WHERE nome = 'Plásticos'));
+	('Felipe Marcos',   'Reparos'),
+	('Kanye West',      'Hospício'),
+	('Kristen Bell',    'Roteiro'),
+	('Martin Scorsese', 'Reclamações'),
+	('Laura Palmer',    'Plásticos');
 
 INSERT INTO empregado (nome, setor) VALUES
-	('David Lynch',         (SELECT codigo FROM setor WHERE nome = 'Reparos')),
-	('Kleber Mendonça',     (SELECT codigo FROM setor WHERE nome = 'Hospício')),
-	('Fernanda Montenegro', (SELECT codigo FROM setor WHERE nome = 'Roteiro')),
-	('Péricles',            (SELECT codigo FROM setor WHERE nome = 'Lavanderia')),
-	('Kathryn Bigelow',     (SELECT codigo FROM setor WHERE nome = 'Plásticos'));
+	('David Lynch',         'Reparos'),
+	('Kleber Mendonça',     'Hospício'),
+	('Fernanda Montenegro', 'Roteiro'),
+	('Péricles',            'Reclamações'),
+	('Kathryn Bigelow',     'Plásticos');
 
 INSERT INTO item (nome) VALUES
 	('GamerGirl Bath Water'),
 	('COMBO: The Outer Worlds + Outer Wilds'),
-	('RED Weapon');
+	('RED Weapon 8K');
 
 INSERT INTO servico (nome) VALUES
 	('Controle da Danos'),

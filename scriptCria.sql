@@ -26,26 +26,25 @@ CREATE TABLE consumidor (
 );
 
 CREATE TABLE setor (
-	codigo SERIAL,
-	nome VARCHAR(32) NOT NULL UNIQUE,
+	nome VARCHAR(32),
 	responsavel INTEGER,
-	CONSTRAINT pk_setor PRIMARY KEY (codigo)
+	CONSTRAINT pk_setor PRIMARY KEY (nome)
 );
 
 CREATE TABLE atendente (
 	cracha SERIAL,
 	nome VARCHAR(64) NOT NULL,
-	setor INTEGER NOT NULL,
+	setor VARCHAR(32) NOT NULL,
 	CONSTRAINT pk_atendente PRIMARY KEY (cracha),
-	CONSTRAINT fk_atendente_setor FOREIGN KEY (setor) REFERENCES setor (codigo)
+	CONSTRAINT fk_atendente_setor FOREIGN KEY (setor) REFERENCES setor (nome)
 );
 
 CREATE TABLE empregado (
 	cracha SERIAL,
 	nome VARCHAR(64) NOT NULL,
-	setor INTEGER NOT NULL,
+	setor VARCHAR(32) NOT NULL,
 	CONSTRAINT pk_empregado PRIMARY KEY (cracha),
-	CONSTRAINT fk_empregado_setor FOREIGN KEY (setor) REFERENCES setor (codigo)
+	CONSTRAINT fk_empregado_setor FOREIGN KEY (setor) REFERENCES setor (nome)
 );
 
 ALTER TABLE setor ADD CONSTRAINT fk_responsavel FOREIGN KEY (responsavel) REFERENCES empregado (cracha);
