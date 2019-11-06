@@ -1,12 +1,8 @@
-DELETE FROM consumidor WHERE nascimento > current_date;
+-- seis unicas
 DELETE FROM consumidor WHERE cpf = '62691733025';
+DELETE FROM atendente WHERE cracha = 1;
 
-DELETE FROM atendente WHERE >;
-DELETE FROM atendente WHERE 
-DELETE FROM atendente WHERE rg = '';
-
-DELETE FROM contato WHERE <;
-DELETE FROM contato WHERE cpf = '';
-DELETE FROM contato WHERE rg = '';
-
-DELETE FROM;
+-- tres filtradas
+DELETE FROM consumidor WHERE nascimento > current_date;
+DELETE FROM atendente WHERE setor = NULL;
+DELETE FROM contato_site WHERE envio < (currente_date - (interval '5 years'));

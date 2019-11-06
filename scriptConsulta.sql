@@ -22,16 +22,25 @@ FROM chamado
 LEFT OUTER JOIN item_comprado
 ON chamado.protocolo = item_comprado.chamado;
 
--- todos os servicos e se tiver chamados com eles vem também
--- TÁ ERRADO!
-SELECT chamado.protocolo          AS "Chamado",
-       servico_contratado.servico AS "Código do Serviço"
+--
+SELECT chamado.status AS "Estado do Chamado",
+       servico.nome   AS "Serviço"
 FROM chamado
 RIGHT OUTER JOIN servico_contratado
-ON chamado.protocolo = servico_contratado.chamado;
+ON chamado.protocolo = servico_contratado.chamado
+RIGHT OUTER JOIN servico
+ON servico_contratado.servico = servico.codigo;
 
--- FULL OUTER JOIN
--- ?
+--
+SELECT consumidor.nome AS "Consumidor",
+       atendente.nome  AS "Atendente"
+FROM consumidor
+FULL OUTER JOIN contato
+ON contato.consumidor = consumidor.cpf
+FULL OUTER JOIN contato_sac
+ON contato_sac.contato = contato.protocolo
+FULL OUTER JOIN atendente
+ON atendente.cracha = contato_sac.atendente;
 
 -- union
 (SELECT atendente.nome AS "Atendentes e Responsáveis"

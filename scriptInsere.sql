@@ -38,6 +38,7 @@ INSERT INTO item (nome) VALUES
 INSERT INTO servico (nome) VALUES
 	('Controle da Danos'),
 	('Descoberta de Vigilantes Mascarados'),
+	('Limpeza de Vômito nas Paredes'),
 	('Modelagem 3D');
 
 INSERT INTO faq (pergunta, resposta) VALUES

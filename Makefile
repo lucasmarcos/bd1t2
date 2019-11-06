@@ -27,3 +27,6 @@ script_insere: scriptInsere.sql
 
 script_consulta: scriptConsulta.sql
 	${PSQL} -h ${SOCKET} ${DBNAME} -f $<
+
+script_atualiza: scriptAtualiza.sql
+	${PSQL} -h ${SOCKET} ${DBNAME} -f $<

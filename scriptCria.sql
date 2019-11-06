@@ -86,7 +86,6 @@ CREATE TABLE resposta (
 	atendente INTEGER NOT NULL,
 	prazo DATE NOT NULL,
 	tipo VARCHAR(16) NOT NULL,
-	detalhes VARCHAR(64),
 	CONSTRAINT fk_sac_atendente FOREIGN KEY (atendente) REFERENCES atendente (cracha),
 	CONSTRAINT fk_site FOREIGN KEY (contato) REFERENCES contato (protocolo)
 );
