@@ -30,3 +30,6 @@ script_consulta: scriptConsulta.sql
 
 script_atualiza: scriptAtualiza.sql
 	${PSQL} -h ${SOCKET} ${DBNAME} -f $<
+
+script_remove: scriptRemove.sql
+	${PSQL} -h ${SOCKET} ${DBNAME} -f $<
