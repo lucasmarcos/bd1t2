@@ -15,14 +15,14 @@ FROM chamado, contato
 WHERE contato.chamado = chamado.protocolo
   AND chamado.status = 'Em andamento';
 
--- todos os chamados, e quando tem item eles tambem
+-- todos os chamados, incluindo opcionalmente os items que ele menciona
 SELECT chamado.protocolo  AS "Chamado",
        item_comprado.item AS "Código do Item"
 FROM chamado
 LEFT OUTER JOIN item_comprado
 ON chamado.protocolo = item_comprado.chamado;
 
---
+-- todos os servicos e o estado dos chamados que referenciam eles, se houver
 SELECT chamado.status AS "Estado do Chamado",
        servico.nome   AS "Serviço"
 FROM chamado
@@ -31,9 +31,10 @@ ON chamado.protocolo = servico_contratado.chamado
 RIGHT OUTER JOIN servico
 ON servico_contratado.servico = servico.codigo;
 
---
-SELECT consumidor.nome AS "Consumidor",
-       atendente.nome  AS "Atendente"
+-- tods os consumidores e atendentes, alem de detalhes do contato entre eles (se ocorreu)
+SELECT consumidor.nome  AS "Consumidor",
+       atendente.nome   AS "Atendente",
+       contato.detalhes AS "Detalhes do Contato"
 FROM consumidor
 FULL OUTER JOIN contato
 ON contato.consumidor = consumidor.cpf
@@ -42,7 +43,7 @@ ON contato_sac.contato = contato.protocolo
 FULL OUTER JOIN atendente
 ON atendente.cracha = contato_sac.atendente;
 
--- union
+-- o nome de todos os atendentes e o nome de todos os reponsaveis por algum setor
 (SELECT atendente.nome AS "Atendentes e Responsáveis"
 FROM atendente)
 UNION
@@ -90,22 +91,26 @@ WHERE contato.protocolo = contato_sac.contato
   AND contato.chamado = chamado.protocolo
   AND chamado.protocolo = item_comprado.chamado));
 
--- L I V R E (refletindo a que fizermos em algebra relacional)
+-- !!!
+-- precisamos fazer: L I V R E (refletindo a que fizermos em algebra relacional)
+-- !!!
 
+-- numero de atendimetos que cada atendente fez
 SELECT atendente.nome   AS "Atendente",
-       atendente.cracha AS "Crachá",
        COUNT(*)         AS "Número de Atendimentos"
 FROM atendente, contato, contato_sac
 WHERE contato.protocolo = contato_sac.contato
   AND contato_sac.atendente = atendente.cracha
 GROUP BY atendente.cracha;
 
+-- atendimentos em cada mes
 SELECT EXTRACT(MONTH FROM contato_sac.inicio) AS "Mês",
        COUNT(*)                               AS "Atendimentos"
 FROM contato_sac, contato
 WHERE contato_sac.contato = contato.protocolo
 GROUP BY EXTRACT(MONTH FROM contato_sac.inicio);
 
+-- quantas reclamacoes cada item teve
 SELECT item.nome AS "Item",
        COUNT(*)  AS "Reclamações"
 FROM item, chamado, item_comprado
@@ -113,12 +118,22 @@ WHERE item.codigo = item_comprado.item
   AND chamado.protocolo = item_comprado.chamado
 GROUP BY item.codigo;
 
--- GROUP BY
--- HAVING
--- ?
+-- consumidores que fizeram mais de 10 contatos
+SELECT consumidor.nome AS "Consumidor",
+       COUNT(*)        AS "Contatos Feitos"
+FROM consumidor, contato
+WHERE consumidor.cpf = contato.consumidor
+GROUP BY consumidor.nome
+HAVING COUNT(*) > 10;
 
--- GROUP BY
--- HAVING
--- ?
+-- numero de atendimetos por setor
+SELECT setor.nome AS "Setor",
+       COUNT(*)   AS "Atendimentos"
+FROM atendente, setor
+WHERE atendente.setor = setor.nome
+GROUP BY setor.nome
+HAVING COUNT(*) > 10;
 
--- L I V R E (usando um comando novo do psql)
+--
+-- precisamos fazer: L I V R E (usando um comando novo do psql)
+--
