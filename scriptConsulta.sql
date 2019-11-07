@@ -1,3 +1,9 @@
+-- Paulo Henrique Moschen Sartori
+-- Fabio Henrique Lorenzetti
+-- Lucas da Silva Marcos
+-- Anderson Pereira Brzezinski
+-- Leonardo Dall Asta Kruger
+
 -- selecinamos o nome do atendente e o status de todos os contatos de 'Lucas Marcos'
 SELECT consumidor.nome  AS "Consumidor",
        atendente.nome   AS "Atendente",

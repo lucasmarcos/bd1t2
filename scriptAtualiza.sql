@@ -1,3 +1,9 @@
+-- Paulo Henrique Moschen Sartori
+-- Fabio Henrique Lorenzetti
+-- Lucas da Silva Marcos
+-- Anderson Pereira Brzezinski
+-- Leonardo Dall Asta Kruger
+
 --
 UPDATE consumidor SET nome = 'Jean Smart', endereco = 'Pato Branco' WHERE cpf = '62691733025';
 

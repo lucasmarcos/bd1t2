@@ -1,3 +1,9 @@
+-- Paulo Henrique Moschen Sartori
+-- Fabio Henrique Lorenzetti
+-- Lucas da Silva Marcos
+-- Anderson Pereira Brzezinski
+-- Leonardo Dall Asta Kruger
+
 -- remove um unico consumidor
 DELETE FROM consumidor WHERE cpf = '62691733025';
 

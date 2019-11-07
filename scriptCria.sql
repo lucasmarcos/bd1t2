@@ -1,3 +1,9 @@
+-- Paulo Henrique Moschen Sartori
+-- Fabio Henrique Lorenzetti
+-- Lucas da Silva Marcos
+-- Anderson Pereira Brzezinski
+-- Leonardo Dall Asta Kruger
+
 DROP TABLE IF EXISTS servico_contratado;
 DROP TABLE IF EXISTS servico;
 DROP TABLE IF EXISTS item_comprado;

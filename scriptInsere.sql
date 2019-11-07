@@ -1,3 +1,9 @@
+-- Paulo Henrique Moschen Sartori
+-- Fabio Henrique Lorenzetti
+-- Lucas da Silva Marcos
+-- Anderson Pereira Brzezinski
+-- Leonardo Dall Asta Kruger
+
 INSERT INTO consumidor (cpf, nome, rg, nascimento, endereco) VALUES
 	('12345678910', 'Lucas Marcos',      '987654321', '1994-11-26', 'New Vegas'),
 	('62691733025', 'Solidus Snake',     '987654322', '2080-01-01', 'Nova Iorque'),
