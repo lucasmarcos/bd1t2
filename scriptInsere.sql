@@ -16,7 +16,7 @@ INSERT INTO consumidor (cpf, nome, rg, nascimento, endereco) VALUES
 
 INSERT INTO setor (nome) VALUES
 	('Reparos'),
-	('Hospício'),
+	('Remédios'),
 	('Roteiro'),
 	('Reclamações'),
 	('Lavanderia'),
@@ -24,14 +24,14 @@ INSERT INTO setor (nome) VALUES
 
 INSERT INTO atendente (nome, setor) VALUES
 	('Felipe Marcos',   'Reparos'),
-	('Kanye West',      'Hospício'),
+	('Kanye West',      'Remédios'),
 	('Kristen Bell',    'Roteiro'),
 	('Martin Scorsese', 'Reclamações'),
 	('Laura Palmer',    'Plásticos');
 
 INSERT INTO empregado (nome, setor) VALUES
 	('David Lynch',         'Reparos'),
-	('Kleber Mendonça',     'Hospício'),
+	('Kleber Mendonça',     'Roteiro'),
 	('Fernanda Montenegro', 'Roteiro'),
 	('Péricles',            'Reclamações'),
 	('Kathryn Bigelow',     'Plásticos');
@@ -39,7 +39,8 @@ INSERT INTO empregado (nome, setor) VALUES
 INSERT INTO item (nome) VALUES
 	('GamerGirl Bath Water'),
 	('COMBO: The Outer Worlds + Outer Wilds'),
-	('RED Weapon 8K');
+	('FKA Twigs - MAGDALENE (Vinil)'),
+	('RED RANGER, incluso GEMINI 5K S35');
 
 INSERT INTO servico (nome) VALUES
 	('Controle da Danos'),
@@ -53,11 +54,10 @@ INSERT INTO faq (pergunta, resposta) VALUES
 	('Posso entregar no outro dia?', 'Não.');
 
 INSERT INTO medida_interna (nome, descricao) VALUES
-	('8m x 54cm', ''),
-	('1cm x 1cm', 'cm'),
-	('74 pés', ''),
-	('76m^3', ''),
-	('8 km/h', 'por hora?');
+	('Telefonema rápido', ''),
+	('Burocraticamente enviar e-mails ao superiores', ''),
+	('Burocraticamente buscar informações com o setor especializado', ''),
+	('Burocraticamente esperar o prazo expirar', '');
 
 --
 INSERT INTO chamado (status) VALUES ('Resolvido');
@@ -82,7 +82,7 @@ INSERT INTO chamado (status) VALUES ('Iniciado');
 --
 
 INSERT INTO medida_interna_tomada (medida, chamado, status, observacoes) VALUES
-	('8 km/h', 1, 'Concluído', '');
+	('Telefonema rápido', 1, 'Concluído', '');
 
 INSERT INTO item_comprado (item, chamado) VALUES
 	(1, 1);
