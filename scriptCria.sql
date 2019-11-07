@@ -107,18 +107,18 @@ CREATE TABLE resposta (
 
 --
 CREATE TABLE medida_interna (
-	nome VARCHAR(32),
-	descricao VARCHAR(128),
+	nome VARCHAR(64),
+	descricao VARCHAR(256),
 	CONSTRAINT pk_medida_interna PRIMARY KEY (nome)
 );
 
 --
 CREATE TABLE medida_interna_tomada (
 	protocolo SERIAL,
-	medida VARCHAR(32),
+	medida VARCHAR(64),
 	chamado INTEGER NOT NULL,
 	status VARCHAR(16) NOT NULL,
-	observacoes VARCHAR(128),
+	observacoes VARCHAR(256),
 	CONSTRAINT pk_medida_tomada PRIMARY KEY (protocolo),
 	CONSTRAINT fk_chamado_medida FOREIGN KEY (chamado) REFERENCES chamado (protocolo),
 	CONSTRAINT fk_medida_interna FOREIGN KEY (medida) REFERENCES medida_interna (nome)
